@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<h1 class="header__text">Register</h1>
+			<form action="../sendInfo" method="POST">
+				<div class="header__regis">
+					<div class="header__regis-name-header">
+						Name <span class="warning-red">*</span>
+					</div>
+					<input type="text" name="firstname" placeholder="First" required
+						id="" class="form-control mt-left"> 
+						<input type="text"
+						name="lastname" id="" placeholder="Last" required
+						class="form-control">
+					<div class="header__regis-name-header">
+						Username <span class="warning-red">*</span>
+					</div>
+					<input type="text" name="username" required placeholder="Username"
+						id="" class="form-control col-full">
+					<div class="header__regis-name-header">
+						Email <span class="warning-red">*</span>
+					</div>
+					<input type="email" name="email" placeholder="Email" required id=""
+						class="form-control col-full">
+					<div class="header__regis-name-header">
+						Password <span class="warning-red">*</span>
+					</div>
+					<input type="password" name="name" placeholder="Password" required
+						id="" class="form-control col-full">
+					<div class="header__regis-name-header">Facebook</div>
+					<input type="text" name="facebook" required id=""
+						class="form-control col-full">
+					<p class="text-bottom">Enter your Facebook profile URL.</p>
+					<div class="header__regis-name-header">Short Bio*</div>
+					<textarea name="formarea" id="data1" cols="77" rows="5"></textarea>
+					<p class="text-bottom">Share a little information about
+						yourself.</p>
+					<input class="input-submit" type="submit" value="Submit">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

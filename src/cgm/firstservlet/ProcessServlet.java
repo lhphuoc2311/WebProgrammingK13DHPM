@@ -2,7 +2,6 @@ package cgm.firstservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
- * Servlet implementation class ServletGioHienTai
+ * Servlet implementation class ProcessServlet
  */
-@WebServlet("/hello")
-public class ServletGioHienTai extends HttpServlet {
+//@WebServlet("/ProcessServlet")
+public class ProcessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletGioHienTai() {
+    public ProcessServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +30,21 @@ public class ServletGioHienTai extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//cod o day
-		// response ve Browser 1 trang HTML voi cai thoi gian la dong
-		PrintWriter out = response.getWriter();//OutPut
+		String firstName = request.getParameter("firstname");
+		String lastName = request.getParameter("lastname");
+		
+		PrintWriter out = response.getWriter();
+
 		out.println("<html>");
+		out.println("<head><title>Infromation</title></head>");
+
 		out.println("<body>");
-		Date today = new Date();//gio ngay hien tai
-		out.println("<h1 align=center> Hoc Lap Trinh Web </h1>");
-		
-		out.println("<br> today :" + today);
-		
+		out.println("<h3>Infromation form</h3>");
+		out.println("<p>First Name = " + firstName + "</p>");
+		out.println("<p>Lats Name = " + lastName + "</p>");
 		out.println("</body>");
-		out.println("</html>");
+		out.println("<html>");
 		
-		System.out.println("Hello Web");
 	}
 
 	/**
