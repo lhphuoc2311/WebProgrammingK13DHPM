@@ -17,6 +17,10 @@
 	<servlet>
 		<servlet-name>layThoiGian</servlet-name>
 		<servlet-class>cgm.firstservlet.ServletGioHienTai</servlet-class>
+		<init-param>
+			<param-name>mail</param-name>
+			<param-value>mail@gmail.com</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet>
@@ -26,11 +30,11 @@
 
 	<servlet-mapping>
 		<servlet-name>process-form</servlet-name>
-		<url-pattern>/sendInfo</url-pattern>
+		<url-pattern>/bai2/sendInfo</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>layThoiGian</servlet-name>
-		<url-pattern>/getThoiGian</url-pattern> <!-- duong dan cua user dung de gui HttpRequest den Server -->
+		<url-pattern>/getThoiGian.html</url-pattern> <!-- duong dan cua user dung de gui HttpRequest den Server -->
 	</servlet-mapping>
 </web-app>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProcessServlet
  */
-//@WebServlet("/ProcessServlet")
+@WebServlet("/helloProcessServlet")
 public class ProcessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,6 +32,10 @@ public class ProcessServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
+		
+		this.getServletConfig().getInitParameter("");
+		///this.getServletContext().getInitParameter(name)
+		
 		
 		PrintWriter out = response.getWriter();
 

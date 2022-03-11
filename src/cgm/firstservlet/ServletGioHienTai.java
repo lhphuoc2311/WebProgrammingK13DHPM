@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ServletGioHienTai
  */
-@WebServlet("/hello")
+@WebServlet(urlPatterns = "/helloBaby.do", initParams = {
+		@WebInitParam(name = "mail1", value = "abc@gmail.com"),
+		@WebInitParam(name = "mail2", value = "xyz@gmail.com")
+} )
 public class ServletGioHienTai extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
