@@ -37,4 +37,33 @@
 		<servlet-name>layThoiGian</servlet-name>
 		<url-pattern>/getThoiGian.html</url-pattern> <!-- duong dan cua user dung de gui HttpRequest den Server -->
 	</servlet-mapping>
+	
+	<!-- <servlet>
+        <servlet-name>jerseyServlet</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>cgm.simpleapp.restfulcrud</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup> 
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jerseyServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping> -->
+<!-- //org.glassfish.jersey.servlet.ServletContainer; -->
+
+	<servlet>
+		<servlet-name>jerseyServlet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>cgm.simpleapp.restfulcrud.service</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jerseyServlet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 </web-app>
