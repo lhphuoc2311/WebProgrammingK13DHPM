@@ -86,9 +86,8 @@ public class ProductListServlet extends HttpServlet {
 		request.setAttribute("list", listProduct);
 		// forword den view jsp
 		//response.sendRedirect: khong kem du lieu de chuyen di
-		//RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/ew.jsp");
-		response.sendRedirect("/productList");
-		//dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/productListView.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

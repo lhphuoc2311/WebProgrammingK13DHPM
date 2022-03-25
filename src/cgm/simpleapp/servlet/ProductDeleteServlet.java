@@ -47,8 +47,12 @@ public class ProductDeleteServlet extends HttpServlet {
 				.path("products/delete/" + code );
 		Invocation.Builder invoBuilder = webTarget.request();
 		invoBuilder.delete();
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/ListProduct.jsp");
-		dispatcher.forward(request, response);
+		
+		  RequestDispatcher dispatcher =
+		  request.getRequestDispatcher("/productList");
+		  dispatcher.forward(request, response);
+		 
+		
 	}
 
 	/**
