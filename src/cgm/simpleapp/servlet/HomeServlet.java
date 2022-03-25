@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cgm.hibernate.dao.ProductDAO;
+
 /**
  * Servlet implementation class HomeServlet
  */
@@ -33,6 +35,7 @@ public class HomeServlet extends HttpServlet {
 		//chuyển hướng
 		//sendRedirect: response
 		//forward: request
+		ProductDAO productDAO = new ProductDAO();
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/homeView.jsp");
 		//dispatcher = request.getRequestDispatcher("/WEB-INF/views/homeView.jsp");

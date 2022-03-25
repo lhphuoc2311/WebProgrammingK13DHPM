@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -20,15 +21,6 @@ import cgm.simpleapp.utils.DBUtils;
 @Path("books")
 public class BookService {
 
-	// ServletContainer
-
-	// ServletContainer
-
-	// ServletContainer
-
-	// @Path("/")
-	// public class HelloWorldResource {
-
 	@GET
 	@Path("/helloworld")
 	public String helloworld() {
@@ -41,19 +33,7 @@ public class BookService {
 	public List<Product> queryProduct() {
 		Connection conn = null;
 
-		/*
-		 * Connection conn = null; try { conn =
-		 * SQLServerConnUtils_SQLJDBC.getSQLServerConnection_SQLJDBC(); } catch
-		 * (ClassNotFoundException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); } catch (SQLException e1) { // TODO Auto-generated
-		 * catch block e1.printStackTrace(); }
-		 */
-
 		List<Product> list = null;
-		// = new ArrayList<Product>();
-
-		// Product product = new Product("p1", "Java", 500);
-		// list.add(product);
 
 		try {
 			conn = SQLServerConnUtils_SQLJDBC.getSQLServerConnection_SQLJDBC();
@@ -63,10 +43,43 @@ public class BookService {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return list;
 
+	}
+	
+	@Path("/insert")
+	@POST
+	public void addProduct(Product p) {
+		
+		Connection conn = null;
+
+		try {
+			conn = SQLServerConnUtils_SQLJDBC.getSQLServerConnection_SQLJDBC();
+			DBUtils.insertProduct(conn, p);;
+		} catch (SQLException e) { // TODOuto-generated
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		
 	}
 
 }
