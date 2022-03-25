@@ -10,6 +10,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.client.internal.routing.ClientResponseMediaTypeDeterminer;
 
 import cgm.simpleapp.beans.Product;
 import cgm.simpleapp.conn.SQLServerConnUtils_SQLJDBC;
@@ -54,6 +63,7 @@ public class EditProductServlet extends HttpServlet {
 
 		// lay thong cua sp bang ma
 		try {
+			//REST
 			product = DBUtils.findProduct(conn, code);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -103,9 +113,19 @@ public class EditProductServlet extends HttpServlet {
 		String errorString = null;
 		
 		//caap nhat udpate
+		//http://localhost:8080/MyFirstProject/rest/products/edit/{code}
 		try {
-			DBUtils.updateProduct(conn, product);
-		} catch (SQLException e) {
+			//DBUtils.updateProduct(conn, product);
+			Client client = ClientBuilder.newClient();
+			WebTarget webTarget = client
+					.target("http://localhost:8080/MyFirstProject/rest/")
+					.path("edit");
+			Invocation.Builder invoBuilder = webTarget
+					.request(MediaType.APPLICATION_JSON);
+			Response rs = invoBuilder
+					.put(Entity.
+							entity(product, MediaType.APPLICATION_JSON));
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			errorString = e.getMessage();

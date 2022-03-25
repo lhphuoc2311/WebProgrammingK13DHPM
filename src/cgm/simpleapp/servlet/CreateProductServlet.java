@@ -4,12 +4,22 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import cgm.simpleapp.beans.Product;
 import cgm.simpleapp.conn.SQLServerConnUtils_SQLJDBC;
@@ -88,8 +98,18 @@ public class CreateProductServlet extends HttpServlet {
 		if (errorString == null) {
 			// thuc hien them
 			try {
-				DBUtils.insertProduct(conn, product);
-			} catch (SQLException e) {
+				//DBUtils.insertProduct(conn, product);
+				//http://localhost:8080/MyFirstProject/rest/products/add
+				Client client = ClientBuilder.newClient();
+				WebTarget webTarget = client
+						.target("http://localhost:8080/MyFirstProject/rest/")
+						.path("products/add");
+				Invocation.Builder invoBuilder = webTarget
+						.request(MediaType.APPLICATION_JSON);	
+				Response res = invoBuilder.
+						post(Entity.entity(product, MediaType.APPLICATION_JSON));
+				
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
